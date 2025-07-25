@@ -1,10 +1,10 @@
 function searchRecipes(){
-    const searchInput = document.getElementById('searchInput').value || "chicken"; // Corrected: getElementById (singular 'Element')
-    const recipesDiv = document.getElementById('recipes'); // Corrected: Changed 'notFound' to 'recipes' to target the correct div
-    const notFoundDiv = document.getElementById('notFound'); // Added to correctly target the notFound div
+    const searchInput = document.getElementById('searchInput').value || "chicken";
+    const recipesDiv = document.getElementById('recipes');
+    const notFoundDiv = document.getElementById('notFound'); 
    
-    recipesDiv.innerHTML = ''; // Added to clear previous search results
-    notFoundDiv.style.display='none'; // Hide the notFound message when recipes are found
+    recipesDiv.innerHTML = ''; 
+    notFoundDiv.style.display='none'; 
 
     if(searchInput.trim() === ''){
         notFoundDiv.innerHTML = 'Please enter a recipe name to search';
@@ -12,12 +12,12 @@ function searchRecipes(){
         return;
     } 
     
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`) // Corrected: Added 'https://' to the API URL
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`) 
     .then(response => response.json())
     .then(data => {
      if(!data.meals){
-      notFoundDiv.innerHTML= 'Recipe not found, try another search !'; // Corrected: Used 'notFoundDiv'
-      notFoundDiv.style.display='block'; // Corrected: Used 'notFoundDiv'
+      notFoundDiv.innerHTML= 'Recipe not found, try another search !'; 
+      notFoundDiv.style.display='block'; 
       
      }
      else{
@@ -68,7 +68,7 @@ function searchRecipes(){
 
  document.getElementById('searchInput').addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-      searchRecipes(); // Call the searchRecipes function
+      searchRecipes(); 
     }
   });
 
